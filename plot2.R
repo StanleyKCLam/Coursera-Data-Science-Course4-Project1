@@ -1,0 +1,5 @@
+hDF <- read.table("household_power_consumption.txt", header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".", skip=66636, nrows=2880)
+datetime <- strptime(paste(hDF[,1], hDF[,2], sep=" "), "%d/%m/%Y %H:%M:%S")
+png("plot2.png", width=480, height=480)
+plot(datetime, hDF[,3], type="l", xlab="", ylab="Global Active Power (kilowatts)")
+dev.off()

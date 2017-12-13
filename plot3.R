@@ -1,0 +1,8 @@
+hDF <- read.table("household_power_consumption.txt", header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".", skip=66636, nrows=2880)
+datetime <- strptime(paste(hDF[,1], hDF[,2], sep=" "), "%d/%m/%Y %H:%M:%S")
+png("plot3.png", width=480, height=480)
+plot(datetime, hDF[,7], type="l", xlab="", ylab="Energy sub metering")
+points(datetime, hDF[,8], type="l", xlab="", col="red")
+points(datetime, hDF[,9], type="l", xlab="", col="blue")
+legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c(1,2,4), lty=c(1,1,1))
+dev.off()
